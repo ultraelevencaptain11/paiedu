@@ -776,7 +776,7 @@
       gap: 8px;
     }
 
-    /* 모달 */
+    /* 모달 (텍스트가 박스 바깥으로 넘치지 않도록 자동 줄바꿈 및 스크롤 처리 적용) */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -797,11 +797,14 @@
       width: 100%;
       padding: 28px;
       box-shadow: var(--shadow-md);
+      max-height: 90vh;
+      overflow-y: auto;
     }
     .modal-box h3 {
       font-size: 1.3rem;
       color: var(--text-dark);
       margin-bottom: 12px;
+      word-break: keep-all;
     }
     .modal-summary {
       background: #f8fafc;
@@ -813,6 +816,7 @@
       display: flex;
       flex-direction: column;
       gap: 6px;
+      word-break: break-all; /* 긴 텍스트(전화번호, 과정명 등)가 박스를 안 넘치고 줄바꿈되도록 처리 */
     }
     .modal-close-btn {
       width: 100%;
@@ -870,7 +874,29 @@
       font-weight: 700;
     }
 
+    /* 모바일 미디어 쿼리 (상단 네비 메뉴 숨기고 연수신청하기 버튼만 가운데 정렬로 강조) */
     @media (max-width: 768px) {
+      .nav-links a:not(.nav-cta) {
+        display: none; /* 모바일 화면에서 일반 메뉴 숨김 */
+      }
+      .nav-container {
+        justify-content: center; /* 로고와 버튼을 중앙 지향 배치하거나 전체 가운데 정렬 */
+      }
+      .nav-brand {
+        display: none; /* 로고 숨기고 신청 버튼만 단독으로 띄워 가운데 정렬 */
+      }
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+      }
+      .nav-cta {
+        display: block;
+        text-align: center;
+        width: 80%;
+        max-width: 240px;
+        margin: 0 auto;
+      }
+
       .course-card {
         grid-template-columns: 1fr;
         gap: 14px;
@@ -986,11 +1012,11 @@
       <div class="venue-grid">
         <div class="venue-card">
           <span class="venue-badge venue-1">과정 I · 과정 II · 과정 III</span>
-          <h3>📍 세종융합교육체험센터</h3>
+          <h3>📍 세종융합교육센터</h3>
           <p class="venue-courses">10.31.(토) / 11.7.(토) / 11.14.(토) 진행 과정</p>
           <div class="map-links">
-            <a href="https://map.naver.com/p/search/%EC%84%B8%EC%A2%85%EC%9C%B5%ED%95%A9%EA%B5%90%EC%9C%A1%EC%B2%B4%ED%97%98%EC%84%BC%ED%84%B0" target="_blank" rel="noopener" class="map-btn">네이버 지도 보기</a>
-            <a href="https://map.kakao.com/?q=%EC%84%B8%EC%A2%85%EC%9C%B5%ED%95%A9%EA%B5%90%EC%9C%A1%EC%B2%B4%ED%97%98%EC%84%BC%ED%84%B0" target="_blank" rel="noopener" class="map-btn">카카오맵 보기</a>
+            <a href="https://map.naver.com/p/search/%EC%84%B8%EC%A2%85%EC%8B%9C%EA%B5%90%EC%9C%A1%EC%B2%AD%EA%B5%90%EC%9C%A1%EC%9B%90" target="_blank" rel="noopener" class="map-btn">네이버 지도 보기</a>
+            <a href="https://map.kakao.com/?q=%EC%84%B8%EC%A2%85%EC%8B%9C%EA%B5%90%EC%9C%A1%EC%B2%AD%EA%B5%90%EC%9C%A1%EC%9B%90" target="_blank" rel="noopener" class="map-btn">카카오맵 보기</a>
           </div>
         </div>
         <div class="venue-card">
@@ -1103,7 +1129,7 @@
 
   <!-- 푸터 -->
   <footer>
-    <p>© 2026 피지컬AI 교육 역량강화 직무연수 운영팀 · 세종융합교육체험센터 · 세종SW교육체험센터</p>
+    <p>© 2026 피지컬AI 교육 역량강화 직무연수 운영팀 · 세종시교육청교육원 · 세종SW교육체험센터</p>
     <p style="margin-top: 6px;">
       <button type="button" onclick="toggleSimPanel()" style="background:none; border:none; color:#64748b; text-decoration:underline; cursor:pointer; font-size:0.78rem;">
         [담당자용 정원·예비인원 상태 미리보기 도구]
@@ -1130,7 +1156,7 @@
      * 3. WAITLIST_LIMIT: 각 과정별 예비 인원 최대 한도 (요청하신 10명 고정)
      * ============================================================================
      */
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx7_fPtRyilXj7gjn-RNpo4wHeQCwIaDJJemDb5otkVw7I2tzUigrCNk4nfAIVppK-RKQ/exec"; // 예: "https://script.google.com/macros/s/AKfycb.../exec"
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx7_fPtRyilXj7gjn-RNpo4wHeQCwIaDJJemDb5otkVw7I2tzUigrCNk4nfAIVppK-RKQ/exec";
     const WAITLIST_LIMIT = 10;
 
     const COURSES = [
@@ -1146,9 +1172,9 @@
         excelLabel: "과정Ⅰ 스마트 물류 로봇 실습",
         date: "2026.10.31.(토) 09:20~16:50 (7차시)",
         hours: 7,
-        venue: "세종융합교육체험센터",
+        venue: "세종시교육청교육원",
         capacity: 20,
-        enrolled: 0 // 초기 인원 0명 (구글 시트 연동 시 시트 값으로 자동 대체됨)
+        enrolled: 0
       },
       {
         id: "c2",
@@ -1162,9 +1188,9 @@
         excelLabel: "과정Ⅱ 피지컬 컴퓨팅 교구 활용 실습",
         date: "2026.11.7.(토) 09:20~16:50 (7차시)",
         hours: 7,
-        venue: "세종융합교육체험센터",
+        venue: "세종시교육청교육원",
         capacity: 20,
-        enrolled: 0 // 초기 인원 0명 (구글 시트 연동 시 시트 값으로 자동 대체됨)
+        enrolled: 0
       },
       {
         id: "c3",
@@ -1178,9 +1204,9 @@
         excelLabel: "과정Ⅲ 로봇 축구 심화 실습",
         date: "2026.11.14.(토) 09:20~17:50 (8차시)",
         hours: 8,
-        venue: "세종융합교육체험센터",
+        venue: "세종시교육청교육원",
         capacity: 20,
-        enrolled: 0 // 초기 인원 0명 (구글 시트 연동 시 시트 값으로 자동 대체됨)
+        enrolled: 0
       },
       {
         id: "c4",
@@ -1196,7 +1222,7 @@
         hours: 8,
         venue: "세종SW교육체험센터",
         capacity: 20,
-        enrolled: 0 // 초기 인원 0명 (구글 시트 연동 시 시트 값으로 자동 대체됨)
+        enrolled: 0
       },
       {
         id: "c5",
@@ -1212,14 +1238,13 @@
         hours: 8,
         venue: "세종SW교육체험센터",
         capacity: 20,
-        enrolled: 0 // 초기 인원 0명 (구글 시트 연동 시 시트 값으로 자동 대체됨)
+        enrolled: 0
       }
     ];
 
     let selectedCourseIds = new Set();
     let currentFilter = "all";
 
-    // 과정 상태 계산 함수 (정원 내 / 예비 1~10번 / 최종마감)
     function getCourseQuotaState(course) {
       const regularEnrolled = Math.min(course.enrolled, course.capacity);
       const waitlistEnrolled = Math.max(0, Math.min(course.enrolled - course.capacity, WAITLIST_LIMIT));
@@ -1413,7 +1438,6 @@
       renderCourseCards();
     }
 
-    // 구글 스프레드시트에서 과정별 신청 인원수(숫자만) 불러오기
     async function fetchCourseCounts() {
       const syncText = document.getElementById("quotaSyncText");
       if (!GOOGLE_SCRIPT_URL) {
@@ -1433,7 +1457,6 @@
               c.capacity = data.capacities[c.id];
             }
           });
-          // 마감된 과정이 선택되어 있었다면 해제
           COURSES.forEach(c => {
             if (getCourseQuotaState(c).isClosed) {
               selectedCourseIds.delete(c.id);
@@ -1448,7 +1471,6 @@
       }
     }
 
-    // 엑셀 서식과 동일한 텍스트 생성 (■ / □ 체크 표기)
     function buildExcelCourseString(selectedSet) {
       return COURSES.map(c => {
         const mark = selectedSet.has(c.id) ? "■" : "□";
@@ -1513,12 +1535,10 @@
           });
         }
 
-        // 화면 내 카운트 즉시 반영
         chosenCourses.forEach(c => {
           c.enrolled += 1;
         });
 
-        // 완료 모달 표시
         document.getElementById("modalSummary").innerHTML = `
           <div><strong>성명 / 소속:</strong> ${userName} (${schoolName} · ${position})</div>
           <div><strong>NEIS 개인번호:</strong> ${neisId}</div>
@@ -1527,7 +1547,6 @@
         `;
         document.getElementById("resultModal").classList.add("show");
 
-        // 폼 초기화
         document.getElementById("trainingApplyForm").reset();
         selectedCourseIds.clear();
         renderAll();
@@ -1543,7 +1562,6 @@
       document.getElementById("resultModal").classList.remove("show");
     }
 
-    // 담당자용 정원/예비 시뮬레이터
     function toggleSimPanel() {
       document.getElementById("adminSimPanel").classList.toggle("open");
     }
@@ -1564,7 +1582,7 @@
     }
 
     function updateSimCount(courseId, val) {
-      const course = COURSES.find(c => c.id === courseId);
+      const course = COURSES.add ? null : COURSES.find(c => c.id === courseId);
       if (!course) return;
       course.enrolled = Math.max(0, parseInt(val, 10) || 0);
       if (getCourseQuotaState(course).isClosed) {
@@ -1578,7 +1596,6 @@
       renderAll();
     }
 
-    // 초기 실행
     renderAll();
     fetchCourseCounts();
   </script>
