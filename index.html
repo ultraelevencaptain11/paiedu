@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 피지컬AI 교육 역량강화 직무연수 신청</title>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+    :root {
+      --bg-main: #f4f7fb;
+      --bg-card: #ffffff;
+      --primary: #1d4ed8;
+      --primary-dark: #1e3a8a;
+      --primary-light: #dbeafe;
+      --secondary: #0284c7;
+      --accent-yellow: #facc15;
+      --accent-amber: #f59e0b;
+      --badge-blue: #1e40af;
+      --badge-green: #15803d;
+      --badge-purple: #5b21b6;
+      --status-open: #16a34a;
+      --status-wait: #d97706;
+      --status-closed: #dc2626;
+      --text-dark: #0f172a;
+      --text-body: #334155;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-body);
+      line-height: 1.6;
+      word-break: keep-all;
+    }
+
+    /* 상단 네비게이션 */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .nav-container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--primary-dark);
+      text-decoration: none;
+    }
+    .nav-brand-badge {
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-body);
+      font-weight: 600;
+      font-size: 0.94rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    .nav-cta {
+      background: var(--primary);
+      color: #fff !important;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.88rem !important;
+      font-weight: 700 !important;
+      box-shadow: 0 4px 12px rgba(29, 78, 216, 0.25);
+    }
+    .nav-cta:hover {
+      background: var(--primary-dark);
+    }
+
+    /* 히어로 섹션 */
+    .hero {
+      position: relative;
+      background: radial-gradient(circle at 20% 20%, #1e3a8a 0%, #0f172a 75%);
+      color: #ffffff;
+      padding: 68px 20px 60px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 36px 36px;
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(30, 64, 175, 0.85);
+      border: 1px solid rgba(96, 165, 250, 0.45);
+      color: #fde047;
+      font-weight: 800;
+      font-size: 0.95rem;
+      padding: 8px 20px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.22;
+      margin-bottom: 14px;
+    }
+    .hero h1 .cyan {
+      color: #38bdf8;
+    }
+    .hero h1 .yellow {
+      color: #facc15;
+    }
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.3vw, 1.25rem);
+      color: #e2e8f0;
+      font-weight: 600;
+      margin-bottom: 26px;
+    }
+    .hero-notices {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+    .hero-notice-chip {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: #f8fafc;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero-notice-chip strong {
+      color: #fde047;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #facc15 0%, #f59e0b 100%);
+      color: #0f172a;
+      font-weight: 800;
+      font-size: 1.05rem;
+      padding: 14px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 10px 20px rgba(245, 158, 11, 0.28);
+      transition: transform 0.15s, box-shadow 0.15s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 24px rgba(245, 158, 11, 0.36);
+    }
+
+    /* 공통 컨테이너 & 섹션 */
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    section {
+      padding: 56px 0;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .section-tag {
+      display: inline-block;
+      color: var(--primary);
+      background: var(--primary-light);
+      font-weight: 800;
+      font-size: 0.8rem;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: clamp(1.5rem, 3.5vw, 2.05rem);
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 0.96rem;
+    }
+
+    /* 정원/예비 안내 배너 */
+    .quota-legend-bar {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 14px 20px;
+      margin-bottom: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+    .quota-legend-items {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.86rem;
+      font-weight: 600;
+    }
+    .legend-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+    .dot-open { background: var(--status-open); }
+    .dot-wait { background: var(--status-wait); }
+    .dot-closed { background: var(--status-closed); }
+
+    .sync-status {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-refresh {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-body);
+      cursor: pointer;
+    }
+    .btn-refresh:hover {
+      background: #e2e8f0;
+    }
+
+    /* 필터 탭 */
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .filter-btn {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      color: var(--text-body);
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .filter-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(29, 78, 216, 0.22);
+    }
+
+    /* 과정 카드 리스트 */
+    .course-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .course-card {
+      background: var(--bg-card);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 22px 24px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 20px;
+      align-items: center;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
+      cursor: pointer;
+      position: relative;
+    }
+    .course-card:hover:not(.is-closed) {
+      transform: translateY(-2px);
+      border-color: #93c5fd;
+      box-shadow: var(--shadow-md);
+    }
+    .course-card.selected {
+      border-color: var(--primary);
+      background: #f8faff;
+      box-shadow: 0 8px 22px rgba(29, 78, 216, 0.12);
+    }
+    .course-card.is-closed {
+      opacity: 0.68;
+      background: #f8fafc;
+      cursor: not-allowed;
+    }
+    .course-num-box {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.55rem;
+      font-weight: 900;
+      color: #ffffff;
+      flex-shrink: 0;
+    }
+    .num-blue { background: linear-gradient(135deg, #1d4ed8, #1e3a8a); }
+    .num-green { background: linear-gradient(135deg, #16a34a, #14532d); }
+    .num-purple { background: linear-gradient(135deg, #6d28d9, #4c1d95); }
+
+    .course-body {
+      min-width: 0;
+    }
+    .course-top-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .course-badge {
+      display: inline-flex;
+      align-items: center;
+      height: 28px;
+      padding: 0 13px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+    .badge-challenge { background-color: var(--badge-blue); }
+    .badge-elem { background-color: var(--badge-green); }
+    .badge-middle { background-color: var(--badge-purple); }
+
+    /* 마감/예비 상태 배지 */
+    .quota-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      height: 28px;
+      padding: 0 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+    .pill-open {
+      background: #dcfce7;
+      color: #15803d;
+      border: 1px solid #86efac;
+    }
+    .pill-wait {
+      background: #fef3c7;
+      color: #b45309;
+      border: 1px solid #fcd34d;
+    }
+    .pill-closed {
+      background: #fee2e2;
+      color: #b91c1c;
+      border: 1px solid #fca5a5;
+    }
+
+    .course-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.38;
+      margin-bottom: 8px;
+    }
+    .course-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.88rem;
+      color: var(--text-body);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .course-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* 정원 & 예비인원 바 영역 */
+    .quota-meter-wrap {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 10px 14px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .meter-col {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .meter-label-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .meter-track {
+      width: 100%;
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .meter-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.35s ease;
+    }
+    .fill-regular { background: var(--primary); }
+    .fill-regular.full { background: var(--status-closed); }
+    .fill-waitlist { background: var(--accent-amber); }
+    .fill-waitlist.full { background: var(--status-closed); }
+
+    .course-Action-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+    .select-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: 1.5px solid #cbd5e1;
+      background: #ffffff;
+      color: var(--text-dark);
+      font-size: 0.88rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .course-card.selected .select-btn {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+    }
+    .course-card.is-closed .select-btn {
+      background: #e2e8f0;
+      border-color: #cbd5e1;
+      color: #64748b;
+      cursor: not-allowed;
+    }
+
+    /* 선택 플로팅 바 */
+    .selection-bar {
+      margin-top: 20px;
+      background: var(--primary-dark);
+      color: #ffffff;
+      padding: 16px 22px;
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: var(--shadow-md);
+    }
+    .selection-info {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    .selection-info strong {
+      color: #fde047;
+      font-weight: 800;
+    }
+
+    /* 연수 장소 카드 */
+    .venue-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .venue-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .venue-badge {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    .venue-1 { background: #dbeafe; color: #1e40af; }
+    .venue-2 { background: #ede9fe; color: #5b21b6; }
+    .venue-card h3 {
+      font-size: 1.2rem;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+    .venue-courses {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+    .map-links {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .map-btn {
+      flex: 1;
+      text-align: center;
+      padding: 9px 12px;
+      border-radius: 8px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid var(--border-color);
+      color: var(--text-dark);
+      background: #f8fafc;
+    }
+    .map-btn:hover {
+      background: #e2e8f0;
+    }
+
+    /* 직무연수 신청서 폼 (엑셀 서식 100% 반영) */
+    .form-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 34px;
+      box-shadow: var(--shadow-md);
+    }
+    .privacy-official-box {
+      background: #f8fafc;
+      border: 1.5px solid #cbd5e1;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-bottom: 26px;
+    }
+    .privacy-official-box h4 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+    .privacy-official-box ol {
+      padding-left: 18px;
+      font-size: 0.88rem;
+      color: var(--text-body);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .privacy-consent-row {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px dashed #cbd5e1;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .consent-radios {
+      display: flex;
+      gap: 18px;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+    .consent-radios label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+    .form-label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+    .form-label .req {
+      color: #dc2626;
+      margin-left: 3px;
+    }
+    .form-label .hint {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-left: 6px;
+    }
+    .form-input {
+      padding: 12px 14px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.12);
+    }
+
+    /* 신청 과정 체크 리스트 (서식 동일) */
+    .course-check-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .course-check-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 13px 16px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.15s;
+      background: #ffffff;
+    }
+    .course-check-item:hover:not(.disabled) {
+      border-color: #93c5fd;
+    }
+    .course-check-item.checked {
+      border-color: var(--primary);
+      background: #eff6ff;
+    }
+    .course-check-item.disabled {
+      opacity: 0.6;
+      background: #f1f5f9;
+      cursor: not-allowed;
+    }
+    .course-check-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.94rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+    .course-check-left input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.08rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(29, 78, 216, 0.25);
+      transition: transform 0.15s;
+    }
+    .submit-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .security-notice {
+      margin-top: 14px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+      padding: 11px 14px;
+      border-radius: 8px;
+      font-size: 0.83rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* 모달 */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 200;
+    }
+    .modal-backdrop.show {
+      display: flex;
+    }
+    .modal-box {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      max-width: 520px;
+      width: 100%;
+      padding: 28px;
+      box-shadow: var(--shadow-md);
+    }
+    .modal-box h3 {
+      font-size: 1.3rem;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+    .modal-summary {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .modal-close-btn {
+      width: 100%;
+      padding: 12px;
+      background: var(--primary);
+      color: #ffffff;
+      font-weight: 800;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    /* 푸터 & 관리자 시뮬레이터 토글 */
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 36px 20px;
+      font-size: 0.86rem;
+      text-align: center;
+    }
+    .admin-sim-panel {
+      max-width: 1040px;
+      margin: 18px auto 0;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: left;
+      color: #e2e8f0;
+      display: none;
+    }
+    .admin-sim-panel.open {
+      display: block;
+    }
+    .sim-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .sim-card {
+      background: #0f172a;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #334155;
+      font-size: 0.8rem;
+    }
+    .sim-card input {
+      width: 70px;
+      padding: 4px 6px;
+      border-radius: 4px;
+      border: 1px solid #475569;
+      background: #1e293b;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      .course-card {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .course-Action-col {
+        align-items: stretch;
+      }
+      .select-btn {
+        justify-content: center;
+      }
+      .quota-meter-wrap {
+        grid-template-columns: 1fr;
+      }
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      .form-card {
+        padding: 22px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 네비게이션 -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-brand">
+        <span class="nav-brand-badge">2026 세종</span>
+        <span>피지컬AI 직무연수</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#courses">과정 및 정원현황</a>
+        <a href="#venues">연수장소</a>
+        <a href="#apply" class="nav-cta">연수 신청하기</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 히어로 배너 -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-pill">100% 체험·실습 중심 토요 집중 직무연수</div>
+      <h1>
+        2026 피지컬AI 교육<br />
+        <span class="cyan">역량강화</span> <span class="yellow">직무연수</span>
+      </h1>
+      <p class="hero-subtitle">원하는 토요일 과정만 골라 들으세요!</p>
+
+      <div class="hero-notices">
+        <div class="hero-notice-chip">✔ <strong>학교급별 관계없이</strong> 모든 과정 신청 가능</div>
+        <div class="hero-notice-chip">✔ <strong>1인 복수 신청</strong> 가능</div>
+        <div class="hero-notice-chip">🍱 <strong>점심 식사 제공!</strong></div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#apply" class="btn-primary">직무연수 신청서 작성하기 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 과정 안내 및 정원/예비 현황 섹션 -->
+  <section id="courses">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">CURRICULUM & QUOTA</span>
+        <h2 class="section-title">과정별 상세 안내 및 실시간 정원 현황</h2>
+        <p class="section-desc">정원 마감 시 과정별 <strong>예비 인원 10명</strong>까지 추가 접수가 진행됩니다.</p>
+      </div>
+
+      <!-- 상태 범례 바 -->
+      <div class="quota-legend-bar">
+        <div class="quota-legend-items">
+          <span><i class="legend-dot dot-open"></i>접수중 (정원 내 신청)</span>
+          <span><i class="legend-dot dot-wait"></i>정원마감 · 예비접수중 (예비 1~10번)</span>
+          <span><i class="legend-dot dot-closed"></i>최종마감 (정원 + 예비 10명 마감)</span>
+        </div>
+        <div class="sync-status">
+          <span id="quotaSyncText">실시간 정원 현황 반영됨</span>
+          <button type="button" class="btn-refresh" onclick="fetchCourseCounts()">↻ 새로고침</button>
+        </div>
+      </div>
+
+      <!-- 필터 버튼 -->
+      <div class="filter-tabs">
+        <button class="filter-btn active" onclick="filterCourses('all', this)">전체 과정 (5)</button>
+        <button class="filter-btn" onclick="filterCourses('challenge', this)">로봇챌린지 (과정 I·III)</button>
+        <button class="filter-btn" onclick="filterCourses('elem', this)">초등 추천 (과정 II)</button>
+        <button class="filter-btn" onclick="filterCourses('middle', this)">중등 추천 (과정 IV·V)</button>
+      </div>
+
+      <!-- 과정 카드 리스트 (JS 렌더링) -->
+      <div id="courseListContainer" class="course-list"></div>
+
+      <!-- 선택 요약 바 -->
+      <div class="selection-bar">
+        <div class="selection-info" id="selectionSummaryText">
+          원하시는 과정을 선택해 주세요. (1개 과정 이상, 복수 선택 가능)
+        </div>
+        <a href="#apply" class="btn-primary" style="padding: 10px 20px; font-size: 0.92rem;">신청서 작성으로 이동 ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 연수 장소 섹션 -->
+  <section id="venues" style="background: #eef2f9;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">LOCATION</span>
+        <h2 class="section-title">연수 장소 안내</h2>
+        <p class="section-desc">과정별로 연수 장소가 다르오니 신청 전 장소를 꼭 확인해 주세요.</p>
+      </div>
+      <div class="venue-grid">
+        <div class="venue-card">
+          <span class="venue-badge venue-1">과정 I · 과정 II · 과정 III</span>
+          <h3>📍 세종융합교육체험센터</h3>
+          <p class="venue-courses">10.31.(토) / 11.7.(토) / 11.14.(토) 진행 과정</p>
+          <div class="map-links">
+            <a href="https://map.naver.com/p/search/%EC%84%B8%EC%A2%85%EC%9C%B5%ED%95%A9%EA%B5%90%EC%9C%A1%EC%B2%B4%ED%97%98%EC%84%BC%ED%84%B0" target="_blank" rel="noopener" class="map-btn">네이버 지도 보기</a>
+            <a href="https://map.kakao.com/?q=%EC%84%B8%EC%A2%85%EC%9C%B5%ED%95%A9%EA%B5%90%EC%9C%A1%EC%B2%B4%ED%97%98%EC%84%BC%ED%84%B0" target="_blank" rel="noopener" class="map-btn">카카오맵 보기</a>
+          </div>
+        </div>
+        <div class="venue-card">
+          <span class="venue-badge venue-2">과정 IV · 과정 V</span>
+          <h3>📍 세종SW교육체험센터</h3>
+          <p class="venue-courses">11.21.(토) / 11.28.(토) 진행 과정</p>
+          <div class="map-links">
+            <a href="https://map.naver.com/p/search/%EC%84%B8%EC%A2%85SW%EA%B5%90%EC%9C%A1%EC%B2%B4%ED%97%98%EC%84%BC%ED%84%B0" target="_blank" rel="noopener" class="map-btn">네이버 지도 보기</a>
+            <a href="https://map.kakao.com/?q=%EC%84%B8%EC%A2%85SW%EA%B5%90%EC%9C%A1%EC%B2%B4%ED%97%98%EC%84%BC%ED%84%B0" target="_blank" rel="noopener" class="map-btn">카카오맵 보기</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 신청서 섹션 (직무연수 신청서 엑셀 서식과 100% 동일한 항목) -->
+  <section id="apply">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">APPLICATION FORM</span>
+        <h2 class="section-title">2026년 피지컬AI교육 역량강화 직무연수 신청서</h2>
+        <p class="section-desc">직무연수 등록 및 이수증 발급을 위한 공식 신청 서식입니다.</p>
+      </div>
+
+      <form id="trainingApplyForm" class="form-card" onsubmit="handleFormSubmit(event)">
+        <!-- 개인정보의 수집·이용에 관한 사항 (서식 원문 그대로 반영) -->
+        <div class="privacy-official-box">
+          <h4>【개인정보의 수집·이용에 관한 사항】</h4>
+          <ol>
+            <li><strong>개인정보의 수집·이용 목적 :</strong> 연수 등록, 이수증 발급 및 이수관리, 연수 안내</li>
+            <li><strong>개인정보 수집 항목 :</strong> NEIS 개인번호, 성명, 생년월일, 소속, 직위, 전화번호, 성별</li>
+            <li>
+              <strong>개인정보의 보유 및 이용기간</strong><br />
+              가) 기간 : 동의서 작성일로부터 15년 (교육공무원 승진규정 제8조(경력의 평정기간))<br />
+              나) 보유기간의 경과, 개인정보 처리목적이 달성하게 되었을 때는 개인정보를 파기함
+            </li>
+            <li>
+              <strong>개인정보 수집·이용에 대한 동의를 거부할 권리</strong><br />
+              연수 참가자는 연수 등록, 이수증 발급 및 관리 등을 위한 개인정보 수집·이용 목적에 대한 동의를 거부할 수 있습니다. 다만, 동의 거부 시 이수증 발급 및 사후 관리가 불가합니다.
+            </li>
+          </ol>
+          <div class="privacy-consent-row">
+            <span style="font-weight: 800; color: var(--text-dark); font-size: 0.92rem;">개인정보 수집·이용 동의 여부 <span style="color:#dc2626">*</span></span>
+            <div class="consent-radios">
+              <label><input type="radio" name="privacyConsent" value="동의" checked required /> ■ 동의</label>
+              <label><input type="radio" name="privacyConsent" value="거부" /> □ 거부</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 신청자 인적사항 입력 (엑셀 서식 6개 컬럼) -->
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="neisId">NEIS 개인번호 <span class="req">*</span><span class="hint">예: I1******** (10자리)</span></label>
+            <input type="text" id="neisId" class="form-input" placeholder="예: I123456789" maxlength="12" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="userName">성명 <span class="req">*</span></label>
+            <input type="text" id="userName" class="form-input" placeholder="예: 김세종" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="birthDate">생년월일 (6자리) <span class="req">*</span><span class="hint">예: 790909</span></label>
+            <input type="text" id="birthDate" class="form-input" placeholder="예: 790909 (YYMMDD)" pattern="[0-9]{6}" maxlength="6" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="schoolName">소속 <span class="req">*</span><span class="hint">학교명 또는 기관명</span></label>
+            <input type="text" id="schoolName" class="form-input" placeholder="예: 세종○○학교" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="position">직위 <span class="req">*</span></label>
+            <input type="text" id="position" class="form-input" placeholder="예: 교사" value="교사" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="phone">전화번호 <span class="req">*</span></label>
+            <input type="tel" id="phone" class="form-input" placeholder="예: 010-1234-5678" required />
+          </div>
+
+          <!-- 신청 과정 (1개 과정 이상 신청, 복수 신청 가능) -->
+          <div class="form-group full">
+            <label class="form-label">
+              신청 과정 <span class="req">*</span>
+              <span class="hint">1개 과정 이상 신청 (복수 신청 가능 / 정원 마감 시 예비 인원 10명까지 접수)</span>
+            </label>
+            <div id="formCourseCheckList" class="course-check-list"></div>
+          </div>
+        </div>
+
+        <button type="submit" id="submitBtn" class="submit-btn">직무연수 신청서 제출하기</button>
+
+        <div class="security-notice">
+          🔒 <strong>개인정보 보호 안내:</strong> 제출하신 신청 정보(성명, NEIS 개인번호 등)는 암호화되어 연수 담당자의 비공개 시트로만 전송되며, 웹사이트 방문자에게는 절대 공개되지 않습니다.
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- 접수 완료 모달 -->
+  <div id="resultModal" class="modal-backdrop">
+    <div class="modal-box">
+      <h3 id="modalTitle">✅ 직무연수 신청이 완료되었습니다!</h3>
+      <div id="modalSummary" class="modal-summary"></div>
+      <button type="button" class="modal-close-btn" onclick="closeModal()">확인</button>
+    </div>
+  </div>
+
+  <!-- 푸터 -->
+  <footer>
+    <p>© 2026 피지컬AI 교육 역량강화 직무연수 운영팀 · 세종융합교육체험센터 · 세종SW교육체험센터</p>
+    <p style="margin-top: 6px;">
+      <button type="button" onclick="toggleSimPanel()" style="background:none; border:none; color:#64748b; text-decoration:underline; cursor:pointer; font-size:0.78rem;">
+        [담당자용 정원·예비인원 상태 미리보기 도구]
+      </button>
+    </p>
+
+    <!-- 담당자 테스트용 시뮬레이션 패널 -->
+    <div id="adminSimPanel" class="admin-sim-panel">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+        <strong>🛠️ 담당자용 정원/예비(10명) 표시 테스트 도구</strong>
+        <span style="font-size:0.78rem; color:#94a3b8;">신청 인원수를 바꿔보며 [접수중 / 예비접수중 / 최종마감] 화면을 미리 확인해 보세요.</span>
+      </div>
+      <div id="simInputsContainer" class="sim-grid"></div>
+    </div>
+  </footer>
+
+  <script>
+    /**
+     * ============================================================================
+     * [담당자 설정 영역]
+     * 1. GOOGLE_SCRIPT_URL: 구글 앱스 스크립트 웹 앱 배포 URL을 넣으시면
+     *    구글 시트와 실시간 정원/예비인원 연동 및 자동 저장이 활성화됩니다.
+     * 2. DEFAULT_CAPACITY: 각 과정별 기본 정원 (기본 20명, 과정별 개별 수정 가능)
+     * 3. WAITLIST_LIMIT: 각 과정별 예비 인원 최대 한도 (요청하신 10명 고정)
+     * ============================================================================
+     */
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbztqoUpALDhAPW2t7QbEU4bFHSHwD9qD6EI7rqYE2ZCJuK9QNScWX-MHOqDmXPR3BKV/exec"
+    const WAITLIST_LIMIT = 10;
+
+    const COURSES = [
+      {
+        id: "c1",
+        num: 1,
+        roman: "과정Ⅰ",
+        badgeText: "과정 I | 로봇챌린지",
+        category: "challenge",
+        colorClass: "num-blue",
+        badgeClass: "badge-challenge",
+        posterTitle: "레고 스파이크 프라임 & 허스키렌즈 스마트 물류 로봇 실습",
+        excelLabel: "과정Ⅰ 스마트 물류 로봇 실습",
+        date: "2026.10.31.(토) 09:20~16:50 (7차시)",
+        hours: 7,
+        venue: "세종융합교육체험센터",
+        capacity: 20,
+        enrolled: 12 // 초기 샘플 신청 인원 (구글 시트 연동 시 시트 값으로 자동 대체됨)
+      },
+      {
+        id: "c2",
+        num: 2,
+        roman: "과정Ⅱ",
+        badgeText: "과정 II | 초등 추천",
+        category: "elem",
+        colorClass: "num-green",
+        badgeClass: "badge-elem",
+        posterTitle: "카미봇 파이 피지컬 컴퓨팅 기초 및 확장형 센서 제어 실습",
+        excelLabel: "과정Ⅱ 피지컬 컴퓨팅 교구 활용 실습",
+        date: "2026.11.7.(토) 09:20~16:50 (7차시)",
+        hours: 7,
+        venue: "세종융합교육체험센터",
+        capacity: 20,
+        enrolled: 20 // 정원 마감 -> 예비 1번부터 접수 가능 상태 예시
+      },
+      {
+        id: "c3",
+        num: 3,
+        roman: "과정Ⅲ",
+        badgeText: "과정 III | 로봇챌린지",
+        category: "challenge",
+        colorClass: "num-blue",
+        badgeClass: "badge-challenge",
+        posterTitle: "레고 스파이크 프라임 & IR볼과 센서로 로봇 축구 실습",
+        excelLabel: "과정Ⅲ 로봇 축구 심화 실습",
+        date: "2026.11.14.(토) 09:20~17:50 (8차시)",
+        hours: 8,
+        venue: "세종융합교육체험센터",
+        capacity: 20,
+        enrolled: 24 // 정원 20명 완료 + 예비 4/10명 접수중 상태 예시
+      },
+      {
+        id: "c4",
+        num: 4,
+        roman: "과정Ⅳ",
+        badgeText: "과정 IV | 중등 추천",
+        category: "middle",
+        colorClass: "num-purple",
+        badgeClass: "badge-middle",
+        posterTitle: "마이크로비트를 이용한 AI 기반 모빌리티 제작 및 제어 실습",
+        excelLabel: "과정Ⅳ 피지컬AI 자율주행 로봇(모빌리티) 실습",
+        date: "2026.11.21.(토) 09:20~17:50 (8차시)",
+        hours: 8,
+        venue: "세종SW교육체험센터",
+        capacity: 20,
+        enrolled: 15
+      },
+      {
+        id: "c5",
+        num: 5,
+        roman: "과정Ⅴ",
+        badgeText: "과정 V | 중등 추천",
+        category: "middle",
+        colorClass: "num-purple",
+        badgeClass: "badge-middle",
+        posterTitle: "인공신경망 학습을 활용한 AI 기반 로봇팔 제어 실습",
+        excelLabel: "과정Ⅴ 인공신경망 학습 기반 피지컬AI 로봇팔 제어 실습",
+        date: "2026.11.28.(토) 09:20~17:50 (8차시)",
+        hours: 8,
+        venue: "세종SW교육체험센터",
+        capacity: 20,
+        enrolled: 9
+      }
+    ];
+
+    let selectedCourseIds = new Set();
+    let currentFilter = "all";
+
+    // 과정 상태 계산 함수 (정원 내 / 예비 1~10번 / 최종마감)
+    function getCourseQuotaState(course) {
+      const regularEnrolled = Math.min(course.enrolled, course.capacity);
+      const waitlistEnrolled = Math.max(0, Math.min(course.enrolled - course.capacity, WAITLIST_LIMIT));
+      const totalMax = course.capacity + WAITLIST_LIMIT;
+
+      const regularPct = Math.min(100, Math.round((regularEnrolled / course.capacity) * 100));
+      const waitlistPct = Math.min(100, Math.round((waitlistEnrolled / WAITLIST_LIMIT) * 100));
+
+      if (course.enrolled < course.capacity) {
+        const remainRegular = course.capacity - course.enrolled;
+        return {
+          status: "OPEN",
+          pillClass: "pill-open",
+          pillText: `🟢 접수중 (잔여 ${remainRegular}석)`,
+          actionLabel: "과정 선택",
+          nextTicketText: "정원 내 접수",
+          regularEnrolled,
+          waitlistEnrolled,
+          regularPct,
+          waitlistPct,
+          isClosed: false
+        };
+      } else if (course.enrolled < totalMax) {
+        const nextWaitNum = waitlistEnrolled + 1;
+        const remainWait = WAITLIST_LIMIT - waitlistEnrolled;
+        return {
+          status: "WAITLIST",
+          pillClass: "pill-wait",
+          pillText: `🟠 정원마감 · 예비접수중 (예비 ${waitlistEnrolled}/${WAITLIST_LIMIT}명)`,
+          actionLabel: `예비 ${nextWaitNum}번 선택`,
+          nextTicketText: `예비 ${nextWaitNum}번 접수 (잔여 예비 ${remainWait}석)`,
+          regularEnrolled,
+          waitlistEnrolled,
+          regularPct,
+          waitlistPct,
+          isClosed: false
+        };
+      } else {
+        return {
+          status: "CLOSED",
+          pillClass: "pill-closed",
+          pillText: `🔴 최종마감 (정원 ${course.capacity}명 + 예비 ${WAITLIST_LIMIT}명 마감)`,
+          actionLabel: "마감됨",
+          nextTicketText: "신청 마감",
+          regularEnrolled,
+          waitlistEnrolled,
+          regularPct: 100,
+          waitlistPct: 100,
+          isClosed: true
+        };
+      }
+    }
+
+    function renderAll() {
+      renderCourseCards();
+      renderFormCheckboxes();
+      updateSelectionSummary();
+      renderSimulatorInputs();
+    }
+
+    function renderCourseCards() {
+      const container = document.getElementById("courseListContainer");
+      const filtered = COURSES.filter(c => currentFilter === "all" || c.category === currentFilter);
+
+      container.innerHTML = filtered.map(course => {
+        const q = getCourseQuotaState(course);
+        const isSelected = selectedCourseIds.has(course.id);
+
+        return `
+          <div class="course-card ${isSelected ? 'selected' : ''} ${q.isClosed ? 'is-closed' : ''}"
+               onclick="toggleCourse('${course.id}')">
+            <div class="course-num-box ${course.colorClass}">${course.num}</div>
+
+            <div class="course-body">
+              <div class="course-top-row">
+                <span class="course-badge ${course.badgeClass}">${course.badgeText}</span>
+                <span class="quota-status-pill ${q.pillClass}">${q.pillText}</span>
+              </div>
+
+              <div class="course-title">${course.posterTitle}</div>
+
+              <div class="course-meta">
+                <span>📅 ${course.date}</span>
+                <span>📍 ${course.venue}</span>
+              </div>
+
+              <div class="quota-meter-wrap">
+                <div class="meter-col">
+                  <div class="meter-label-row">
+                    <span>정원 현황</span>
+                    <span style="color:${q.regularEnrolled >= course.capacity ? '#dc2626' : '#1e40af'}">
+                      ${q.regularEnrolled} / ${course.capacity}명 ${q.regularEnrolled >= course.capacity ? '(정원마감)' : ''}
+                    </span>
+                  </div>
+                  <div class="meter-track">
+                    <div class="meter-fill fill-regular ${q.regularEnrolled >= course.capacity ? 'full' : ''}"
+                         style="width: ${q.regularPct}%"></div>
+                  </div>
+                </div>
+
+                <div class="meter-col">
+                  <div class="meter-label-row">
+                    <span>예비 인원 (최대 ${WAITLIST_LIMIT}명)</span>
+                    <span style="color:${q.waitlistEnrolled > 0 ? '#b45309' : '#64748b'}">
+                      예비 ${q.waitlistEnrolled} / ${WAITLIST_LIMIT}명
+                    </span>
+                  </div>
+                  <div class="meter-track">
+                    <div class="meter-fill fill-waitlist ${q.waitlistEnrolled >= WAITLIST_LIMIT ? 'full' : ''}"
+                         style="width: ${q.waitlistPct}%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="course-Action-col">
+              <button type="button" class="select-btn" ${q.isClosed ? 'disabled' : ''}>
+                ${q.isClosed ? '✕ 신청 마감' : (isSelected ? '✔ 선택됨' : '+ ' + q.actionLabel)}
+              </button>
+              <span style="font-size:0.76rem; color:var(--text-muted); font-weight:600;">
+                ${q.nextTicketText}
+              </span>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderFormCheckboxes() {
+      const listEl = document.getElementById("formCourseCheckList");
+      listEl.innerHTML = COURSES.map(course => {
+        const q = getCourseQuotaState(course);
+        const isSelected = selectedCourseIds.has(course.id);
+
+        return `
+          <label class="course-check-item ${isSelected ? 'checked' : ''} ${q.isClosed ? 'disabled' : ''}">
+            <div class="course-check-left">
+              <input type="checkbox"
+                     name="courseSelect"
+                     value="${course.id}"
+                     ${isSelected ? 'checked' : ''}
+                     ${q.isClosed ? 'disabled' : ''}
+                     onchange="toggleCourse('${course.id}')" />
+              <span>${course.excelLabel} <small style="color:var(--text-muted); font-weight:500;">(${course.date})</small></span>
+            </div>
+            <span class="quota-status-pill ${q.pillClass}" style="font-size:0.75rem; height:24px;">
+              ${q.status === 'OPEN' ? `접수중 (${q.regularEnrolled}/${course.capacity}명)` :
+                q.status === 'WAITLIST' ? `예비 ${q.waitlistEnrolled + 1}번 접수중 (예비 ${q.waitlistEnrolled}/${WAITLIST_LIMIT})` :
+                '최종마감'}
+            </span>
+          </label>
+        `;
+      }).join("");
+    }
+
+    function toggleCourse(courseId) {
+      const course = COURSES.find(c => c.id === courseId);
+      if (!course) return;
+      const q = getCourseQuotaState(course);
+      if (q.isClosed) {
+        alert("해당 과정은 정원 및 예비 인원(10명)이 모두 마감되었습니다.");
+        return;
+      }
+      if (selectedCourseIds.has(courseId)) {
+        selectedCourseIds.delete(courseId);
+      } else {
+        selectedCourseIds.add(courseId);
+      }
+      renderAll();
+    }
+
+    function updateSelectionSummary() {
+      const summaryEl = document.getElementById("selectionSummaryText");
+      if (selectedCourseIds.size === 0) {
+        summaryEl.innerHTML = "원하시는 과정을 선택해 주세요. (1개 과정 이상, 복수 선택 가능)";
+        return;
+      }
+      const chosen = COURSES.filter(c => selectedCourseIds.has(c.id));
+      const totalHours = chosen.reduce((acc, c) => acc + c.hours, 0);
+      const names = chosen.map(c => {
+        const q = getCourseQuotaState(c);
+        return q.status === "WAITLIST" ? `${c.roman}(예비${q.waitlistEnrolled + 1}번)` : c.roman;
+      }).join(", ");
+      summaryEl.innerHTML = `선택 과정: <strong>${names}</strong> (총 <strong>${chosen.length}개 과정 / ${totalHours}차시</strong>)`;
+    }
+
+    function filterCourses(category, btnEl) {
+      currentFilter = category;
+      document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+      if (btnEl) btnEl.classList.add("active");
+      renderCourseCards();
+    }
+
+    // 구글 스프레드시트에서 과정별 신청 인원수(숫자만) 불러오기
+    async function fetchCourseCounts() {
+      const syncText = document.getElementById("quotaSyncText");
+      if (!GOOGLE_SCRIPT_URL) {
+        syncText.textContent = "미리보기 모드 (구글 시트 URL 연결 시 실시간 연동)";
+        return;
+      }
+      try {
+        syncText.textContent = "실시간 현황 불러오는 중...";
+        const res = await fetch(GOOGLE_SCRIPT_URL + "?action=counts", { method: "GET" });
+        const data = await res.json();
+        if (data && data.counts) {
+          COURSES.forEach(c => {
+            if (typeof data.counts[c.id] === "number") {
+              c.enrolled = data.counts[c.id];
+            }
+            if (data.capacities && typeof data.capacities[c.id] === "number") {
+              c.capacity = data.capacities[c.id];
+            }
+          });
+          // 마감된 과정이 선택되어 있었다면 해제
+          COURSES.forEach(c => {
+            if (getCourseQuotaState(c).isClosed) {
+              selectedCourseIds.delete(c.id);
+            }
+          });
+          renderAll();
+          syncText.textContent = "실시간 정원 현황 반영 완료";
+        }
+      } catch (err) {
+        console.warn("정원 조회 오류:", err);
+        syncText.textContent = "정원 현황 표시중";
+      }
+    }
+
+    // 엑셀 서식과 동일한 텍스트 생성 (■ / □ 체크 표기)
+    function buildExcelCourseString(selectedSet) {
+      return COURSES.map(c => {
+        const mark = selectedSet.has(c.id) ? "■" : "□";
+        return `${mark} ${c.excelLabel}`;
+      }).join("\n");
+    }
+
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+
+      const consentVal = document.querySelector('input[name="privacyConsent"]:checked')?.value;
+      if (consentVal !== "동의") {
+        alert("개인정보 수집·이용에 동의하셔야 직무연수 신청 및 이수증 발급이 가능합니다.");
+        return;
+      }
+
+      if (selectedCourseIds.size === 0) {
+        alert("최소 1개 이상의 연수 과정을 선택해 주세요.");
+        return;
+      }
+
+      const neisId = document.getElementById("neisId").value.trim();
+      const userName = document.getElementById("userName").value.trim();
+      const birthDate = document.getElementById("birthDate").value.trim();
+      const schoolName = document.getElementById("schoolName").value.trim();
+      const position = document.getElementById("position").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+
+      const chosenCourses = COURSES.filter(c => selectedCourseIds.has(c.id));
+      const statusDetails = chosenCourses.map(c => {
+        const q = getCourseQuotaState(c);
+        if (q.status === "WAITLIST") {
+          return `${c.excelLabel} [예비 ${q.waitlistEnrolled + 1}번]`;
+        }
+        return `${c.excelLabel} [정원 내 접수]`;
+      });
+
+      const payload = {
+        neisId,
+        userName,
+        birthDate,
+        schoolName,
+        position,
+        phone,
+        selectedCourseIds: Array.from(selectedCourseIds),
+        excelCourseBlock: buildExcelCourseString(selectedCourseIds),
+        statusSummary: statusDetails.join(" / "),
+        privacyConsent: "■ 동의 / □ 거부"
+      };
+
+      const submitBtn = document.getElementById("submitBtn");
+      submitBtn.disabled = true;
+      submitBtn.textContent = "신청서 전송 중...";
+
+      try {
+        if (GOOGLE_SCRIPT_URL) {
+          await fetch(GOOGLE_SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify(payload)
+          });
+        }
+
+        // 화면 내 카운트 즉시 반영
+        chosenCourses.forEach(c => {
+          c.enrolled += 1;
+        });
+
+        // 완료 모달 표시
+        document.getElementById("modalSummary").innerHTML = `
+          <div><strong>성명 / 소속:</strong> ${userName} (${schoolName} · ${position})</div>
+          <div><strong>NEIS 개인번호:</strong> ${neisId}</div>
+          <div><strong>생년월일 / 연락처:</strong> ${birthDate} / ${phone}</div>
+          <div style="margin-top:6px;"><strong>신청 과정 내역:</strong><br/>${statusDetails.map(s => "• " + s).join("<br/>")}</div>
+        `;
+        document.getElementById("resultModal").classList.add("show");
+
+        // 폼 초기화
+        document.getElementById("trainingApplyForm").reset();
+        selectedCourseIds.clear();
+        renderAll();
+      } catch (err) {
+        alert("신청 중 오류가 발생했습니다. 다시 시도해 주세요.");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "직무연수 신청서 제출하기";
+      }
+    }
+
+    function closeModal() {
+      document.getElementById("resultModal").classList.remove("show");
+    }
+
+    // 담당자용 정원/예비 시뮬레이터
+    function toggleSimPanel() {
+      document.getElementById("adminSimPanel").classList.toggle("open");
+    }
+
+    function renderSimulatorInputs() {
+      const container = document.getElementById("simInputsContainer");
+      if (!container) return;
+      container.innerHTML = COURSES.map(c => `
+        <div class="sim-card">
+          <div style="font-weight:800; margin-bottom:6px; color:#38bdf8;">${c.roman} (정원 ${c.capacity} + 예비 ${WAITLIST_LIMIT})</div>
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <span>현재 신청인원:</span>
+            <input type="number" min="0" max="${c.capacity + WAITLIST_LIMIT + 5}" value="${c.enrolled}"
+                   onchange="updateSimCount('${c.id}', this.value)" />
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function updateSimCount(courseId, val) {
+      const course = COURSES.find(c => c.id === courseId);
+      if (!course) return;
+      course.enrolled = Math.max(0, parseInt(val, 10) || 0);
+      if (getCourseQuotaState(course).isClosed) {
+        selectedCourseIds.delete(course.id);
+      }
+      renderAll();
+    }
+
+    // 초기 실행
+    renderAll();
+    fetchCourseCounts();
+  </script>
+</body>
+</html>
