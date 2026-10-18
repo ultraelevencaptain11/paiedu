@@ -874,29 +874,32 @@
       font-weight: 700;
     }
 
-    /* 모바일 미디어 쿼리 (상단 네비 메뉴 숨기고 연수신청하기 버튼만 가운데 정렬로 강조) */
+/* 모바일 미디어 쿼리 수정 버전 */
     @media (max-width: 768px) {
-      .nav-links a:not(.nav-cta) {
-        display: none; /* 모바일 화면에서 일반 메뉴 숨김 */
-      }
       .nav-container {
-        justify-content: center; /* 로고와 버튼을 중앙 지향 배치하거나 전체 가운데 정렬 */
+        padding: 0 10px;
+        height: 56px;
       }
       .nav-brand {
-        display: none; /* 로고 숨기고 신청 버튼만 단독으로 띄워 가운데 정렬 */
+        font-size: 0.95rem; /* 모바일 화면 폭에 맞게 글씨 크기 미세 조정 */
+        gap: 6px;
+      }
+      .nav-brand-badge {
+        font-size: 0.68rem;
+        padding: 2px 6px;
       }
       .nav-links {
-        width: 100%;
-        justify-content: center;
+        gap: 10px; /* 메뉴 간격 좁히기 */
+      }
+      .nav-links a:not(.nav-cta) {
+        font-size: 0.82rem; /* 링크 글씨 크기를 줄여서 공간 확보 */
       }
       .nav-cta {
-        display: block;
-        text-align: center;
-        width: 80%;
-        max-width: 240px;
-        margin: 0 auto;
+        padding: 6px 12px !important;
+        font-size: 0.78rem !important;
       }
 
+      /* 기존 카드 및 폼 관련 반응형 레이아웃 유지 */
       .course-card {
         grid-template-columns: 1fr;
         gap: 14px;
