@@ -1585,7 +1585,7 @@
     }
 
     function updateSimCount(courseId, val) {
-      const course = COURSES.add ? null : COURSES.find(c => c.id === courseId);
+      const course = COURSES.find(c => c.id === courseId);
       if (!course) return;
       course.enrolled = Math.max(0, parseInt(val, 10) || 0);
       if (getCourseQuotaState(course).isClosed) {
