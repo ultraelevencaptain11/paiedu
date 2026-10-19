@@ -547,7 +547,10 @@
     }
 
     function buildExcelCourseString(selectedSet) {
-      return COURSES.map(c => `${selectedSet.has(c.id) ? "■" : "□"} ${c.excelLabel}`).join("\n");
+      return COURSES.map(c => {
+        const mark = selectedSet.has(c.id) ? "신청" : "";
+        return `${c.excelLabel}: ${mark}`;
+      }).join("\n");
     }
 
     async function handleFormSubmit(e) {
