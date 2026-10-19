@@ -222,12 +222,12 @@
 
       <div class="quota-legend-bar">
         <div class="quota-legend-items">
-          <span><i class="legend-dot dot-open"></i>접수중</span>
-          <span><i class="legend-dot dot-wait"></i>예비접수중</span>
-          <span><i class="legend-dot dot-closed"></i>최종마감</span>
+          <span><i class="legend-dot dot-open"></i>접수중 (정원 내 신청)</span>
+          <span><i class="legend-dot dot-wait"></i>정원마감 · 예비접수중 (예비 1~10번)</span>
+          <span><i class="legend-dot dot-closed"></i>최종마감 (정원 + 예비 10명 마감)</span>
         </div>
         <div class="sync-status">
-          <span id="quotaSyncText">실시간 정원 반영됨</span>
+          <span id="quotaSyncText">실시간 정원 현황 반영됨</span>
           <button type="button" class="btn-refresh" onclick="fetchCourseCounts()">↻ 새로고침</button>
         </div>
       </div>
@@ -242,7 +242,7 @@
       <div id="courseListContainer" class="course-list"></div>
 
       <div class="selection-bar">
-        <div class="selection-info" id="selectionSummaryText">원하시는 과정을 선택해 주세요.</div>
+        <div class="selection-info" id="selectionSummaryText">원하시는 과정을 선택해 주세요. (1개 과정 이상, 복수 선택 가능)</div>
         <a href="#apply" class="btn-primary" style="padding: 10px 20px; font-size: 0.92rem;">신청서 작성으로 이동 ↓</a>
       </div>
     </div>
@@ -253,11 +253,12 @@
       <div class="section-header">
         <span class="section-tag">LOCATION</span>
         <h2 class="section-title">연수 장소 안내</h2>
+        <p class="section-desc">과정별로 연수 장소가 다르오니 신청 전 장소를 꼭 확인해 주세요.</p>
       </div>
       <div class="venue-grid">
         <div class="venue-card">
           <span class="venue-badge venue-1">과정 I · 과정 II · 과정 III</span>
-          <h3>📍 세종융합교육체험센터</h3>
+          <h3>📍융합교육체험센터</h3>
           <p class="venue-courses">10.31.(토) / 11.7.(토) / 11.14.(토) 진행 과정</p>
           <div class="map-links">
             <a href="https://map.naver.com/p/search/%EC%84%B8%EC%A2%85%ED%8A%B9%EB%B3%84%EC%9E%90%EC%B9%98%EC%8B%9C%EA%B5%90%EC%9C%A1%EC%B2%AD%EA%B5%90%EC%9C%A1%EC%9B%90" target="_blank" rel="noopener" class="map-btn">네이버 지도 보기</a>
@@ -266,7 +267,7 @@
         </div>
         <div class="venue-card">
           <span class="venue-badge venue-2">과정 IV · 과정 V</span>
-          <h3>📍 세종SW교육체험센터</h3>
+          <h3>📍세종SW교육체험센터</h3>
           <p class="venue-courses">11.21.(토) / 11.28.(토) 진행 과정</p>
           <div class="map-links">
             <a href="https://map.naver.com/p/search/%EC%84%B8%EC%A2%85SW%EA%B5%90%EC%9C%A1%EC%B2%B4%ED%97%98%EC%84%BC%ED%84%B0" target="_blank" rel="noopener" class="map-btn">네이버 지도 보기</a>
@@ -282,17 +283,19 @@
       <div class="section-header">
         <span class="section-tag">APPLICATION FORM</span>
         <h2 class="section-title">2026년 피지컬AI교육 역량강화 직무연수 신청서</h2>
+        <p class="section-desc">직무연수 등록 및 이수증 발급을 위한 공식 신청 서식입니다.</p>
       </div>
 
       <form id="trainingApplyForm" class="form-card" onsubmit="handleFormSubmit(event)">
         <div class="privacy-official-box">
           <h4>【개인정보의 수집·이용에 관한 사항】</h4>
           <ol>
-            <li><strong>개인정보 수집·이용 목적 :</strong> 연수 등록, 이수증 발급 및 이수관리</li>
-            <li><strong>수집 항목 :</strong> NEIS 개인번호, 성명, 생년월일, 소속, 직위, 전화번호</li>
+            <li><strong>개인정보의 수집·이용 목적 :</strong> 연수 등록, 이수증 발급 및 이수관리, 연수 안내</li>
+            <li><strong>개인정보 수집 항목 :</strong> NEIS 개인번호, 성명, 생년월일, 소속, 직위, 전화번호, 성별</li>
+            <li><strong>개인정보의 보유 및 이용기간 :</strong> 동의서 작성일로부터 15년</li>
           </ol>
           <div class="privacy-consent-row">
-            <span style="font-weight: 800; font-size: 0.92rem;">개인정보 수집·이용 동의 여부 <span style="color:#dc2626">*</span></span>
+            <span style="font-weight: 800; color: var(--text-dark); font-size: 0.92rem;">개인정보 수집·이용 동의 여부 <span style="color:#dc2626">*</span></span>
             <div class="consent-radios">
               <label><input type="radio" name="privacyConsent" value="동의" checked required /> ■ 동의</label>
               <label><input type="radio" name="privacyConsent" value="거부" /> □ 거부</label>
@@ -303,7 +306,7 @@
         <div class="form-grid">
           <div class="form-group">
             <label class="form-label" for="neisId">NEIS 개인번호 <span class="req">*</span></label>
-            <input type="text" id="neisId" class="form-input" placeholder="예: I123456789" required />
+            <input type="text" id="neisId" class="form-input" placeholder="예: I123456789" maxlength="12" required />
           </div>
           <div class="form-group">
             <label class="form-label" for="userName">성명 <span class="req">*</span></label>
@@ -338,7 +341,7 @@
 
   <div id="resultModal" class="modal-backdrop">
     <div class="modal-box">
-      <h3>✅ 직무연수 신청이 완료되었습니다!</h3>
+      <h3 id="modalTitle">✅ 직무연수 신청이 완료되었습니다!</h3>
       <div id="modalSummary" class="modal-summary"></div>
       <button type="button" class="modal-close-btn" onclick="closeModal()">확인</button>
     </div>
@@ -347,16 +350,16 @@
   <footer>
     <p>© 2026 피지컬AI 교육 역량강화 직무연수 운영팀</p>
     <p style="margin-top: 6px;">
-      <button type="button" onclick="toggleSimPanel()" style="background:none; border:none; color:#64748b; text-decoration:underline; cursor:pointer; font-size:0.78rem;">[담당자용 미리보기 도구]</button>
+      <button type="button" onclick="toggleSimPanel()" style="background:none; border:none; color:#64748b; text-decoration:underline; cursor:pointer; font-size:0.78rem;">[담당자용 정원·예비인원 상태 미리보기 도구]</button>
     </p>
     <div id="adminSimPanel" class="admin-sim-panel">
-      <strong>🛠️ 담당자용 정원 테스트 도구</strong>
+      <strong>🛠️ 담당자용 정원/예비(10명) 표시 테스트 도구</strong>
       <div id="simInputsContainer" class="sim-grid"></div>
     </div>
   </footer>
 
   <script>
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxmPjfQjh8Jo-yZhFxh18c6_rfJjXdMApBDO2VHIC11hn94r35LbE92VD0zKs-RVQ3c/exec";
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyzTpWJZ6hUNDCosQYUlW1268ynQmd_UrlCOxRXncvT4dMEp2erbqQWIs4lsQwsQV0U/exec";
     const WAITLIST_LIMIT = 10;
 
     const COURSES = [
@@ -374,15 +377,40 @@
       const regularEnrolled = Math.min(course.enrolled, course.capacity);
       const waitlistEnrolled = Math.max(0, Math.min(course.enrolled - course.capacity, WAITLIST_LIMIT));
       const totalMax = course.capacity + WAITLIST_LIMIT;
+
       const regularPct = Math.min(100, Math.round((regularEnrolled / course.capacity) * 100));
       const waitlistPct = Math.min(100, Math.round((waitlistEnrolled / WAITLIST_LIMIT) * 100));
 
       if (course.enrolled < course.capacity) {
-        return { status: "OPEN", pillClass: "pill-open", pillText: `🟢 접수중 (잔여 ${course.capacity - course.enrolled}석)`, actionLabel: "과정 선택", nextTicketText: "정원 내 접수", regularEnrolled, waitlistEnrolled, regularPct, waitlistPct, isClosed: false };
+        const remainRegular = course.capacity - course.enrolled;
+        return {
+          status: "OPEN",
+          pillClass: "pill-open",
+          pillText: `🟢 접수중 (잔여 ${remainRegular}석)`,
+          actionLabel: "과정 선택",
+          nextTicketText: "정원 내 접수",
+          regularEnrolled, waitlistEnrolled, regularPct, waitlistPct, isClosed: false
+        };
       } else if (course.enrolled < totalMax) {
-        return { status: "WAITLIST", pillClass: "pill-wait", pillText: `🟠 예비접수중 (예비 ${waitlistEnrolled}/${WAITLIST_LIMIT}명)`, actionLabel: `예비 ${waitlistEnrolled + 1}번 선택`, nextTicketText: `예비 ${waitlistEnrolled + 1}번 접수`, regularEnrolled, waitlistEnrolled, regularPct, waitlistPct, isClosed: false };
+        const nextWaitNum = waitlistEnrolled + 1;
+        const remainWait = WAITLIST_LIMIT - waitlistEnrolled;
+        return {
+          status: "WAITLIST",
+          pillClass: "pill-wait",
+          pillText: `🟠 정원마감 · 예비접수중 (예비 ${waitlistEnrolled}/${WAITLIST_LIMIT}명)`,
+          actionLabel: `예비 ${nextWaitNum}번 선택`,
+          nextTicketText: `예비 ${nextWaitNum}번 접수 (잔여 예비 ${remainWait}석)`,
+          regularEnrolled, waitlistEnrolled, regularPct, waitlistPct, isClosed: false
+        };
       } else {
-        return { status: "CLOSED", pillClass: "pill-closed", pillText: `🔴 최종마감`, actionLabel: "마감됨", nextTicketText: "신청 마감", regularEnrolled, waitlistEnrolled, regularPct: 100, waitlistPct: 100, isClosed: true };
+        return {
+          status: "CLOSED",
+          pillClass: "pill-closed",
+          pillText: `🔴 최종마감 (정원 ${course.capacity}명 + 예비 ${WAITLIST_LIMIT}명 마감)`,
+          actionLabel: "마감됨",
+          nextTicketText: "신청 마감",
+          regularEnrolled, waitlistEnrolled, regularPct: 100, waitlistPct: 100, isClosed: true
+        };
       }
     }
 
@@ -396,9 +424,11 @@
     function renderCourseCards() {
       const container = document.getElementById("courseListContainer");
       const filtered = COURSES.filter(c => currentFilter === "all" || c.category === currentFilter);
+
       container.innerHTML = filtered.map(course => {
         const q = getCourseQuotaState(course);
         const isSelected = selectedCourseIds.has(course.id);
+
         return `
           <div class="course-card ${isSelected ? 'selected' : ''} ${q.isClosed ? 'is-closed' : ''}" onclick="toggleCourse('${course.id}')">
             <div class="course-num-box ${course.colorClass}">${course.num}</div>
@@ -408,20 +438,38 @@
                 <span class="quota-status-pill ${q.pillClass}">${q.pillText}</span>
               </div>
               <div class="course-title">${course.posterTitle}</div>
-              <div class="course-meta"><span>📅 ${course.date}</span><span>📍 ${course.venue}</span></div>
+              <div class="course-meta">
+                <span>📅 ${course.date}</span>
+                <span>📍 ${course.venue}</span>
+              </div>
               <div class="quota-meter-wrap">
                 <div class="meter-col">
-                  <div class="meter-label-row"><span>정원</span><span>${q.regularEnrolled} / ${course.capacity}명</span></div>
-                  <div class="meter-track"><div class="meter-fill fill-regular ${q.regularEnrolled >= course.capacity ? 'full' : ''}" style="width: ${q.regularPct}%"></div></div>
+                  <div class="meter-label-row">
+                    <span>정원 현황</span>
+                    <span style="color:${q.regularEnrolled >= course.capacity ? '#dc2626' : '#1e40af'}">
+                      ${q.regularEnrolled} / ${course.capacity}명 ${q.regularEnrolled >= course.capacity ? '(정원마감)' : ''}
+                    </span>
+                  </div>
+                  <div class="meter-track">
+                    <div class="meter-fill fill-regular ${q.regularEnrolled >= course.capacity ? 'full' : ''}" style="width: ${q.regularPct}%"></div>
+                  </div>
                 </div>
                 <div class="meter-col">
-                  <div class="meter-label-row"><span>예비 (최대 ${WAITLIST_LIMIT})</span><span>예비 ${q.waitlistEnrolled}명</span></div>
-                  <div class="meter-track"><div class="meter-fill fill-waitlist ${q.waitlistEnrolled >= WAITLIST_LIMIT ? 'full' : ''}" style="width: ${q.waitlistPct}%"></div></div>
+                  <div class="meter-label-row">
+                    <span>예비 인원 (최대 ${WAITLIST_LIMIT}명)</span>
+                    <span style="color:${q.waitlistEnrolled > 0 ? '#b45309' : '#64748b'}">예비 ${q.waitlistEnrolled} / ${WAITLIST_LIMIT}명</span>
+                  </div>
+                  <div class="meter-track">
+                    <div class="meter-fill fill-waitlist ${q.waitlistEnrolled >= WAITLIST_LIMIT ? 'full' : ''}" style="width: ${q.waitlistPct}%"></div>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="course-Action-col">
-              <button type="button" class="select-btn" ${q.isClosed ? 'disabled' : ''}>${q.isClosed ? '✕ 마감' : (isSelected ? '✔ 선택됨' : '+ ' + q.actionLabel)}</button>
+              <button type="button" class="select-btn" ${q.isClosed ? 'disabled' : ''}>
+                ${q.isClosed ? '✕ 신청 마감' : (isSelected ? '✔ 선택됨' : '+ ' + q.actionLabel)}
+              </button>
+              <span style="font-size:0.76rem; color:var(--text-muted); font-weight:600;">${q.nextTicketText}</span>
             </div>
           </div>
         `;
@@ -433,13 +481,16 @@
       listEl.innerHTML = COURSES.map(course => {
         const q = getCourseQuotaState(course);
         const isSelected = selectedCourseIds.has(course.id);
+
         return `
           <label class="course-check-item ${isSelected ? 'checked' : ''} ${q.isClosed ? 'disabled' : ''}">
             <div class="course-check-left">
               <input type="checkbox" name="courseSelect" value="${course.id}" ${isSelected ? 'checked' : ''} ${q.isClosed ? 'disabled' : ''} onchange="toggleCourse('${course.id}')" />
-              <span>${course.excelLabel} <small>(${course.date})</small></span>
+              <span>${course.excelLabel} <small style="color:var(--text-muted); font-weight:500;">(${course.date})</small></span>
             </div>
-            <span class="quota-status-pill ${q.pillClass}" style="font-size:0.75rem; height:24px;">${q.status === 'OPEN' ? `접수중` : q.status === 'WAITLIST' ? `예비접수` : '마감'}</span>
+            <span class="quota-status-pill ${q.pillClass}" style="font-size:0.75rem; height:24px;">
+              ${q.status === 'OPEN' ? `접수중 (${q.regularEnrolled}/${course.capacity}명)` : q.status === 'WAITLIST' ? `예비 ${q.waitlistEnrolled + 1}번 접수중` : '최종마감'}
+            </span>
           </label>
         `;
       }).join("");
@@ -448,16 +499,25 @@
     function toggleCourse(courseId) {
       const course = COURSES.find(c => c.id === courseId);
       if (!course) return;
-      if (getCourseQuotaState(course).isClosed) { alert("마감된 과정입니다."); return; }
+      const q = getCourseQuotaState(course);
+      if (q.isClosed) { alert("해당 과정은 정원 및 예비 인원(10명)이 모두 마감되었습니다."); return; }
       if (selectedCourseIds.has(courseId)) { selectedCourseIds.delete(courseId); } else { selectedCourseIds.add(courseId); }
       renderAll();
     }
 
     function updateSelectionSummary() {
       const summaryEl = document.getElementById("selectionSummaryText");
-      if (selectedCourseIds.size === 0) { summaryEl.innerHTML = "원하시는 과정을 선택해 주세요."; return; }
+      if (selectedCourseIds.size === 0) {
+        summaryEl.innerHTML = "원하시는 과정을 선택해 주세요. (1개 과정 이상, 복수 선택 가능)";
+        return;
+      }
       const chosen = COURSES.filter(c => selectedCourseIds.has(c.id));
-      summaryEl.innerHTML = `선택 과정: <strong>${chosen.map(c => c.roman).join(", ")}</strong> (총 ${chosen.length}개)`;
+      const totalHours = chosen.reduce((acc, c) => acc + c.hours, 0);
+      const names = chosen.map(c => {
+        const q = getCourseQuotaState(c);
+        return q.status === "WAITLIST" ? `${c.roman}(예비${q.waitlistEnrolled + 1}번)` : c.roman;
+      }).join(", ");
+      summaryEl.innerHTML = `선택 과정: <strong>${names}</strong> (총 <strong>${chosen.length}개 과정 / ${totalHours}차시</strong>)`;
     }
 
     function filterCourses(category, btnEl) {
@@ -471,7 +531,7 @@
       const syncText = document.getElementById("quotaSyncText");
       if (!GOOGLE_SCRIPT_URL) return;
       try {
-        syncText.textContent = "불러오는 중...";
+        syncText.textContent = "실시간 현황 불러오는 중...";
         const res = await fetch(GOOGLE_SCRIPT_URL + "?action=counts");
         const data = await res.json();
         if (data && data.counts) {
@@ -479,32 +539,45 @@
             if (typeof data.counts[c.id] === "number") c.enrolled = data.counts[c.id];
           });
           renderAll();
-          syncText.textContent = "반영 완료";
+          syncText.textContent = "실시간 정원 현황 반영 완료";
         }
       } catch (err) {
-        syncText.textContent = "연동 오류";
+        syncText.textContent = "정원 현황 표시중";
       }
+    }
+
+    function buildExcelCourseString(selectedSet) {
+      return COURSES.map(c => `${selectedSet.has(c.id) ? "■" : "□"} ${c.excelLabel}`).join("\n");
     }
 
     async function handleFormSubmit(e) {
       e.preventDefault();
-      if (selectedCourseIds.size === 0) { alert("최소 1개 과정을 선택해 주세요."); return; }
+      if (selectedCourseIds.size === 0) { alert("최소 1개 이상의 연수 과정을 선택해 주세요."); return; }
+
+      const neisId = document.getElementById("neisId").value.trim();
+      const userName = document.getElementById("userName").value.trim();
+      const birthDate = document.getElementById("birthDate").value.trim();
+      const schoolName = document.getElementById("schoolName").value.trim();
+      const position = document.getElementById("position").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+
+      const chosenCourses = COURSES.filter(c => selectedCourseIds.has(c.id));
+      const statusDetails = chosenCourses.map(c => {
+        const q = getCourseQuotaState(c);
+        return q.status === "WAITLIST" ? `${c.excelLabel} [예비 ${q.waitlistEnrolled + 1}번]` : `${c.excelLabel} [정원 내 접수]`;
+      });
 
       const payload = {
-        neisId: document.getElementById("neisId").value.trim(),
-        userName: document.getElementById("userName").value.trim(),
-        birthDate: document.getElementById("birthDate").value.trim(),
-        schoolName: document.getElementById("schoolName").value.trim(),
-        position: document.getElementById("position").value.trim(),
-        phone: document.getElementById("phone").value.trim(),
+        neisId, userName, birthDate, schoolName, position, phone,
         selectedCourseIds: Array.from(selectedCourseIds),
-        statusSummary: COURSES.filter(c => selectedCourseIds.has(c.id)).map(c => c.excelLabel).join(" / "),
-        privacyConsent: "■ 동의"
+        excelCourseBlock: buildExcelCourseString(selectedCourseIds),
+        statusSummary: statusDetails.join(" / "),
+        privacyConsent: "■ 동의 / □ 거부"
       };
 
       const submitBtn = document.getElementById("submitBtn");
       submitBtn.disabled = true;
-      submitBtn.textContent = "전송 중...";
+      submitBtn.textContent = "신청서 전송 중...";
 
       try {
         await fetch(GOOGLE_SCRIPT_URL, {
@@ -513,13 +586,18 @@
           body: JSON.stringify(payload)
         });
 
-        document.getElementById("modalSummary").innerHTML = `<div><strong>성명:</strong> ${payload.userName} (${payload.schoolName})</div><div><strong>연락처:</strong> ${payload.phone}</div>`;
+        document.getElementById("modalSummary").innerHTML = `
+          <div><strong>성명 / 소속:</strong> ${userName} (${schoolName} · ${position})</div>
+          <div><strong>NEIS 개인번호:</strong> ${neisId}</div>
+          <div><strong>생년월일 / 연락처:</strong> ${birthDate} / ${phone}</div>
+          <div style="margin-top:6px;"><strong>신청 과정 내역:</strong><br/>${statusDetails.map(s => "• " + s).join("<br/>")}</div>
+        `;
         document.getElementById("resultModal").classList.add("show");
         document.getElementById("trainingApplyForm").reset();
         selectedCourseIds.clear();
         fetchCourseCounts();
       } catch (err) {
-        alert("신청 중 오류가 발생했습니다.");
+        alert("신청 중 오류가 발생했습니다. 다시 시도해 주세요.");
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = "직무연수 신청서 제출하기";
@@ -528,16 +606,21 @@
 
     function closeModal() { document.getElementById("resultModal").classList.remove("show"); }
     function toggleSimPanel() { document.getElementById("adminSimPanel").classList.toggle("open"); }
+    
     function renderSimulatorInputs() {
       const container = document.getElementById("simInputsContainer");
       if (!container) return;
       container.innerHTML = COURSES.map(c => `
         <div class="sim-card">
-          <div>${c.roman}</div>
-          <input type="number" min="0" value="${c.enrolled}" onchange="updateSimCount('${c.id}', this.value)" />
+          <div style="font-weight:800; margin-bottom:6px; color:#38bdf8;">${c.roman} (정원 ${c.capacity} + 예비 ${WAITLIST_LIMIT})</div>
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <span>현재 신청인원:</span>
+            <input type="number" min="0" max="${c.capacity + WAITLIST_LIMIT + 5}" value="${c.enrolled}" onchange="updateSimCount('${c.id}', this.value)" />
+          </div>
         </div>
       `).join("");
     }
+
     function updateSimCount(courseId, val) {
       const course = COURSES.find(c => c.id === courseId);
       if (!course) return;
