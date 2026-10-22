@@ -223,8 +223,8 @@
       <div class="quota-legend-bar">
         <div class="quota-legend-items">
           <span><i class="legend-dot dot-open"></i>접수중 (정원 내 신청)</span>
-          <span><i class="legend-dot dot-wait"></i>정원마감 · 예비접수중 (예비 1~10번)</span>
-          <span><i class="legend-dot dot-closed"></i>최종마감 (정원 + 예비 10명 마감)</span>
+          <span><i class="legend-dot dot-wait"></i>정원마감</span>
+          <span><i class="legend-dot dot-closed"></i>최종마감</span>
         </div>
         <div class="sync-status">
           <span id="quotaSyncText">실시간 정원 현황 반영됨</span>
@@ -386,6 +386,7 @@
           pillClass: "pill-open",
           pillText: `🟢 접수중 (잔여 ${remainRegular}석)`,
           actionLabel: "과정 선택",
+          nextTicketText: "신청 가능",
           regularEnrolled, waitlistEnrolled, regularPct, waitlistPct, isClosed: false
         };
       } else if (course.enrolled < totalMax) {
@@ -396,6 +397,7 @@
           pillClass: "pill-wait",
           pillText: `🟠 정원마감 (예비 ${waitlistEnrolled}/${WAITLIST_LIMIT}명)`,
           actionLabel: `과정 선택`,
+          nextTicketText: "정원 초과 시 신청자 중 우선순위에 따라 선정 및 예비 순번 부여",
           regularEnrolled, waitlistEnrolled, regularPct, waitlistPct, isClosed: false
         };
       } else {
